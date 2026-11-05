@@ -5,144 +5,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FiestaLingua - 樂學西語</title>
     <style>
-       body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #6a1b9a; /* 設定為好看的紫色背景 */
-    margin: 0;
-    padding: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    color: #ffffff; /* 確保全頁文字預設為白色 */
-}
-.container {
-    background: rgba(0, 0, 0, 0.3); /* 半透明深色區塊讓文字更顯眼 */
-    border-radius: 20px;
-    padding: 25px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-    max-width: 520px;
-    width: 100%;
-    text-align: center;
-}
-h1 {
-    color: #ffeb3b; /* 標題改為醒目的黃色 */
-    margin-bottom: 5px;
-}
-.subtitle {
-    color: #e0e0e0; /* 副標題為淺灰色 */
-}
-        /* 導覽列頁籤 */
-        .nav-tabs {
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #7b1fa2 0%, #4a148c 100%);
+            margin: 0;
+            padding: 20px;
             display: flex;
-            justify-content: space-around;
-            background: #f1f3f5;
-            border-radius: 12px;
-            padding: 5px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-            gap: 4px;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #ffffff;
         }
-        .tab-btn {
-            background: none;
-            border: none;
-            padding: 6px 10px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: bold;
-            color: #495057;
-            font-size: 13px;
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            max-width: 520px;
+            width: 100%;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
-        .tab-btn.active {
-            background: #ff6b6b;
-            color: white;
+        h1 {
+            color: #ffeb3b;
+            margin-bottom: 10px;
+            font-size: 28px;
         }
-        .status-bar {
-            display: flex;
-            justify-content: space-around;
-            background: #fff3cd;
-            padding: 10px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            font-weight: bold;
-            color: #856404;
-        }
-        .fox-box {
-            font-size: 70px;
-            margin: 10px 0;
-            background: #f8f9fa;
-            border-radius: 50%;
-            width: 100px;
-            height: 100px;
-            line-height: 100px;
-            display: inline-block;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            position: relative;
-        }
-        .hat {
-            position: absolute;
-            top: -12px;
-            left: 18px;
-            font-size: 38px;
-            display: none;
-        }
-        .card {
-            background: #fdf0ed;
-            border: 2px dashed #ffb3a7;
-            border-radius: 12px;
-            padding: 15px;
-            margin-bottom: 15px;
-            text-align: left;
-        }
-        .card h3 {
-            margin-top: 0;
-            color: #d9534f;
+        .subtitle {
+            color: #e0e0e0;
             font-size: 16px;
+            margin-bottom: 20px;
         }
-        button {
-            background-color: #ff6b6b;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 25px;
-            font-size: 15px;
-            cursor: pointer;
-            transition: 0.2s;
-            margin: 5px;
-        }
-        button:hover {
-            background-color: #ff5252;
-            transform: scale(1.02);
-        }
-        button:disabled {
-            background-color: #cccccc;
-            cursor: not-allowed;
-            transform: none;
-        }
-        .options {
-            display: grid;
-            gap: 8px;
-            margin-top: 10px;
-        }
-        .option-btn {
-            background-color: #e9ecef;
-            color: #333;
-            text-align: left;
-            padding: 10px 15px;
-            border-radius: 8px;
-            font-size: 14px;
-            border: none;
-        }
-        .option-btn:hover {
-            background-color: #dee2e6;
-        }
-        .grammar-box, .reading-box {
-            background: #e3f2fd;
-            border: 2px dashed #90caf9;
-            border-radius: 12px;
+        .content-box {
+            background: rgba(0, 0, 0, 0.2);
             padding: 15px;
-            margin-bottom: 15px;
-            text-align: left;
+            border-radius: 10px;
+            color: #ffffff;
+            line-height: 1.6;
         }
-        .grammar-box h3, .reading-box h3 {
-            colo
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>FiestaLingua - 樂學西語</h1>
+        <div class="subtitle">歡迎來到你的西班牙語學習空間</div>
+        <div class="content-box">
+            <p>這裡是用來存放學習筆記與網頁內容的地方。</p>
+        </div>
+    </div>
+</body>
+</html>
