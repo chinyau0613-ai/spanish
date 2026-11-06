@@ -3,76 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FiestaLingua - 樂學西語</title>
+    <title>FiestaLingua - 30天樂學西語</title>
     <style>
+        :root {
+            --primary-color: #7952b3;
+            --primary-dark: #5e4b8b;
+            --bg-gradient: linear-gradient(135deg, #e8dff5 0%, #fce1e4 100%);
+            --card-bg: #f7f4fc;
+            --text-color: #2c2c2c;
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #e8dff5 0%, #fce1e4 100%);
+            background: var(--bg-gradient);
             margin: 0;
-            padding: 20px;
+            padding: 15px;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
+            box-sizing: border-box;
         }
+
         .container {
             background: #ffffff;
-            border-radius: 20px;
+            border-radius: 24px;
             padding: 25px;
-            box-shadow: 0 10px 30px rgba(74, 58, 89, 0.15);
-            max-width: 520px;
+            box-shadow: 0 15px 35px rgba(74, 58, 89, 0.2);
             width: 100%;
+            max-width: 650px;
             text-align: center;
-            border: 2px solid #dcd6f7;
+            border: 3px solid #dcd6f7;
+            box-sizing: border-box;
+            animation: fadeIn 0.5s ease-out;
         }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         h1 {
-            color: #5e4b8b;
+            color: var(--primary-dark);
             margin-bottom: 5px;
+            font-size: 26px;
             font-weight: 800;
         }
+
         .subtitle {
             color: #555555;
             font-size: 14px;
             margin-bottom: 15px;
             font-weight: 600;
         }
-        /* 導覽列頁籤 */
+
+        /* 導覽列頁籤（自動適配手機與平板換行） */
         .nav-tabs {
             display: flex;
-            justify-content: space-around;
+            justify-content: center;
             background: #f3effa;
-            border-radius: 12px;
+            border-radius: 14px;
             padding: 6px;
             margin-bottom: 20px;
             flex-wrap: wrap;
-            gap: 4px;
+            gap: 6px;
             border: 1px solid #dcd6f7;
         }
+
         .tab-btn {
             background: none;
             border: none;
-            padding: 7px 10px;
-            border-radius: 8px;
+            padding: 8px 12px;
+            border-radius: 10px;
             cursor: pointer;
             font-weight: 700;
-            color: #4a3b6c;
+            color: var(--primary-dark);
             font-size: 13px;
+            transition: all 0.2s ease;
         }
+
+        .tab-btn:hover {
+            background: #e0d4f7;
+        }
+
         .tab-btn.active {
-            background: #7952b3;
+            background: var(--primary-color);
             color: #ffffff;
+            box-shadow: 0 4px 10px rgba(121, 82, 179, 0.3);
+            transform: scale(1.05);
         }
+
         .status-bar {
             display: flex;
             justify-content: space-around;
-            background: #fff8e8;
-            padding: 10px;
-            border-radius: 10px;
+            background: linear-gradient(135deg, #fff8e8 0%, #ffeaa7 100%);
+            padding: 12px;
+            border-radius: 12px;
             margin-bottom: 20px;
             font-weight: 700;
             color: #664d03;
             border: 1px solid #ffeeba;
+            box-shadow: inset 0 2px 5px rgba(255,255,255,0.6);
         }
+
+        /* 小狐狸角色與彈跳特效 */
         .fox-box {
             font-size: 70px;
             margin: 10px 0;
@@ -82,117 +116,262 @@
             height: 100px;
             line-height: 100px;
             display: inline-block;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            box-shadow: 0 6px 15px rgba(121, 82, 179, 0.15);
             position: relative;
-            border: 2px solid #dcd6f7;
+            border: 3px solid #b19cd9;
+            transition: transform 0.3s ease;
         }
+
+        .fox-box:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+
         .hat {
             position: absolute;
-            top: -12px;
+            top: -14px;
             left: 18px;
             font-size: 38px;
             display: none;
+            animation: bounceIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0); }
+            70% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
         .card {
-            background: #f7f4fc;
+            background: var(--card-bg);
             border: 2px dashed #b19cd9;
-            border-radius: 12px;
-            padding: 15px;
+            border-radius: 16px;
+            padding: 18px;
             margin-bottom: 15px;
             text-align: left;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
         }
+
         .card h3 {
             margin-top: 0;
-            color: #5e4b8b;
+            color: var(--primary-dark);
             font-size: 16px;
             font-weight: 700;
         }
-        .card p {
-            color: #2c2c2c;
+
+        .card p, .card li {
+            color: var(--text-color);
             font-weight: 500;
+            font-size: 14px;
         }
+
         button {
-            background-color: #7952b3;
+            background-color: var(--primary-color);
             color: white;
             border: none;
-            padding: 10px 20px;
+            padding: 10px 22px;
             border-radius: 25px;
             font-size: 15px;
             font-weight: 700;
             cursor: pointer;
-            transition: 0.2s;
+            transition: all 0.2s ease;
             margin: 5px;
+            box-shadow: 0 4px 12px rgba(121, 82, 179, 0.3);
         }
+
         button:hover {
-            background-color: #634297;
-            transform: scale(1.02);
+            background-color: var(--primary-dark);
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 6px 15px rgba(121, 82, 179, 0.4);
         }
+
         button:disabled {
             background-color: #cccccc;
             cursor: not-allowed;
             transform: none;
+            box-shadow: none;
         }
+
         .options {
             display: grid;
-            gap: 8px;
-            margin-top: 10px;
+            gap: 10px;
+            margin-top: 12px;
         }
+
         .option-btn {
             background-color: #ffffff;
             color: #2b2b2b;
             text-align: left;
-            padding: 10px 15px;
-            border-radius: 8px;
+            padding: 12px 16px;
+            border-radius: 10px;
             font-size: 14px;
             font-weight: 600;
-            border: 1px solid #b19cd9;
+            border: 2px solid #dcd6f7;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+            transition: all 0.2s ease;
         }
+
         .option-btn:hover {
             background-color: #f3effa;
+            border-color: var(--primary-color);
+            transform: translateX(4px);
         }
+
         .grammar-box, .reading-box {
             background: #edf2f8;
             border: 2px dashed #90caf9;
-            border-radius: 12px;
-            padding: 15px;
+            border-radius: 16px;
+            padding: 18px;
             margin-bottom: 15px;
             text-align: left;
         }
+
         .grammar-box h3, .reading-box h3 {
             color: #0d47a1;
             margin-top: 0;
             font-weight: 700;
         }
-        .grammar-box p, .reading-box p, .grammar-box li {
-            color: #1a1a1a;
-            font-weight: 500;
-        }
+
         .sentence-slot {
             display: inline-block;
             min-width: 80px;
-            border-bottom: 2px solid #5e4b8b;
+            border-bottom: 3px solid var(--primary-dark);
             text-align: center;
-            color: #7952b3;
+            color: var(--primary-color);
             font-weight: 700;
             padding: 0 5px;
         }
+
+        /* 影片逐句導覽與黃色高亮框架 */
         .video-container {
             position: relative;
             width: 100%;
             padding-bottom: 56.25%;
             height: 0;
             margin-top: 10px;
+            margin-bottom: 15px;
         }
+
         .video-container iframe {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            border-radius: 10px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
+
+        .subtitle-box {
+            background: #fff;
+            border: 2px solid #b19cd9;
+            border-radius: 12px;
+            padding: 12px;
+            max-height: 180px;
+            overflow-y: auto;
+            text-align: left;
+        }
+
+        .sub-line {
+            padding: 8px 12px;
+            margin-bottom: 6px;
+            border-radius: 8px;
+            font-size: 13px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid transparent;
+        }
+
+        /* 動態黃色透明高亮框架指引 */
+        .sub-line.active-highlight {
+            background: linear-gradient(135deg, #fff3cd 0%, #ffeeba 100%) !important;
+            border: 2px solid #ffc107 !important;
+            box-shadow: 0 0 15px rgba(255, 193, 7, 0.6);
+            font-weight: bold;
+            transform: scale(1.01);
+        }
+
+        .day-select {
+            margin-bottom: 12px;
+            width: 100%;
+            padding: 10px;
+            border-radius: 10px;
+            border: 2px solid var(--primary-color);
+            font-weight: bold;
+            color: var(--primary-dark);
+            background: white;
+        }
+
+        /* 炫彩動態特效彈窗（取代單調白框警示） */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f7f4fc 100%);
+            border: 4px solid var(--primary-color);
+            border-radius: 24px;
+            padding: 30px;
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(121, 82, 179, 0.4);
+            transform: scale(0.7);
+            animation: modalPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
+        @keyframes modalPop {
+            to { transform: scale(1); }
+        }
+
+        .modal-emoji {
+            font-size: 60px;
+            margin-bottom: 10px;
+            animation: bounce 1s infinite alternate;
+        }
+
+        @keyframes bounce {
+            from { transform: translateY(0); }
+            to { transform: translateY(-10px); }
+        }
+
+        .modal-title {
+            color: var(--primary-dark);
+            font-size: 22px;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .modal-text {
+            color: #444;
+            font-size: 15px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
         .hidden {
             display: none;
+        }
+
+        /* 響應式優化：手機與小螢幕自動調整 */
+        @media (max-width: 480px) {
+            body { padding: 5px; }
+            .container { padding: 15px; border-radius: 16px; }
+            h1 { font-size: 22px; }
+            .tab-btn { font-size: 12px; padding: 6px 8px; }
         }
     </style>
 </head>
@@ -200,22 +379,22 @@
 
 <div class="container">
     <h1>🦊 FiestaLingua</h1>
-    <div class="subtitle">新手互動西語學習樂園</div>
+    <div class="subtitle">30 天沉浸式西語學習樂園（支援手機、平板與電腦）</div>
 
     <!-- 頂部頁籤切換 -->
     <div class="nav-tabs">
         <button class="tab-btn active" onclick="switchTab('home', event)">🏠 首頁換裝</button>
-        <button class="tab-btn" onclick="switchTab('wordgame', event)">🧩 認字遊戲</button>
-        <button class="tab-btn" onclick="switchTab('reading', event)">📖 閱讀小書房</button>
-        <button class="tab-btn" onclick="switchTab('grammar', event)">📌 文法小學堂</button>
-        <button class="tab-btn" onclick="switchTab('sentence', event)">✍️ 造句挑戰</button>
-        <button class="tab-btn" onclick="switchTab('vlog', event)">📺 生活 Vlog</button>
+        <button class="tab-btn" onclick="switchTab('wordgame', event)">🧩 30天認字</button>
+        <button class="tab-btn" onclick="switchTab('reading', event)">📖 30天閱讀</button>
+        <button class="tab-btn" onclick="switchTab('grammar', event)">📌 30天文法</button>
+        <button class="tab-btn" onclick="switchTab('sentence', event)">✍️ 30天造句</button>
+        <button class="tab-btn" onclick="switchTab('vlog', event)">📺 30天Vlog逐句</button>
     </div>
 
     <!-- 狀態列 -->
     <div class="status-bar">
-        <div>金幣：<span id="coins">10</span> 💰</div>
-        <div>狀態：<span id="fox-status">初次見面</span></div>
+        <div>金幣：<span id="coins">50</span> 💰</div>
+        <div>進度：<span id="day-progress">第 1 天 / 共 30 天</span></div>
     </div>
 
     <!-- ================= 頁籤 1：首頁與換裝 ================= -->
@@ -227,8 +406,22 @@
             </div>
         </div>
 
+        <div class="card">
+            <h3>🗓️ 選擇你的學習天數 (Day 1 - 30)</h3>
+            <select class="day-select" id="current-day-select" onchange="changeDay()">
+                <script>
+                    for(let i=1; i<=30; i++) {
+                        document.write(`<option value="${i}">第 ${i} 天：每日 20 分鐘專屬特訓</option>`);
+                    }
+                </script>
+            </select>
+            <p id="day-goal-text" style="font-size: 13px; color: #5e4b8b; margin-top: 5px;">
+                🎯 <strong>今日目標 (Day 1)：</strong>掌握基礎問候語、認識基本名詞與日常打招呼。
+            </p>
+        </div>
+
         <div id="task-1" class="card">
-            <h3>🎯 每日任務：打招呼配對遊戲</h3>
+            <h3>🎯 今日打招呼挑戰</h3>
             <p>請選出 <strong>¡Hola!</strong> 的正確中文意思：</p>
             <div class="options">
                 <button class="option-btn" onclick="checkAnswer(false)">A. 早安 (Buenos días)</button>
@@ -238,18 +431,18 @@
         </div>
 
         <div id="task-2" class="card hidden">
-            <h3>✨ 恭喜完成今日特訓！</h3>
+            <h3>✨ 恭喜完成今日 20 分鐘特訓！</h3>
             <p>你已經賺夠了金幣，快幫小狐狸換上新帽子吧！</p>
             <button id="buy-btn" onclick="buyHat()">購買新手帽兜 (消耗 50 金幣)</button>
         </div>
     </div>
 
-    <!-- ================= 頁籤 2：認字小遊戲 ================= -->
+    <!-- ================= 頁籤 2：30天認字遊戲 ================= -->
     <div id="tab-wordgame" class="tab-content hidden">
         <div class="card">
-            <h3>🧩 新手認字大挑戰</h3>
-            <p>請選出西語單字 <strong>"Gato"</strong> 的正確意思：</p>
-            <div class="options">
+            <h3>🧩 30天認字消消樂（第 <span class="word-day-label">1</span> 天）</h3>
+            <p id="word-question">請選出西語單字 <strong>"Gato"</strong> 的正確意思：</p>
+            <div class="options" id="word-options">
                 <button class="option-btn" onclick="checkWordGame(false)">A. 狗狗 (Perro)</button>
                 <button class="option-btn" onclick="checkWordGame(true)">B. 貓咪 (Gato)</button>
                 <button class="option-btn" onclick="checkWordGame(false)">C. 兔子 (Conejo)</button>
@@ -257,20 +450,20 @@
         </div>
     </div>
 
-    <!-- ================= 頁籤 3：閱讀小書房 ================= -->
+    <!-- ================= 頁籤 3：30天閱讀小書房 ================= -->
     <div id="tab-reading" class="tab-content hidden">
         <div class="reading-box">
-            <h3>📖 短文章：Un día en Madrid (馬德里的一天)</h3>
-            <p style="font-style: italic; color: #1a1a1a; font-weight: 600;">
+            <h3>📖 30天閱讀：第 <span class="read-day-label">1</span> 天短文章</h3>
+            <p id="reading-text" style="font-style: italic; color: #1a1a1a; font-weight: 600;">
                 "¡Hola! Me llamo Carlos. Vivo en Madrid. Por la mañana, tomo un café y leo un libro. ¡Qué día tan feliz!"
             </p>
-            <p style="font-size: 13px; color: #333333; background: #ffffff; padding: 8px; border-radius: 6px; font-weight: 600;">
+            <p style="font-size: 13px; color: #333333; background: #ffffff; padding: 8px; border-radius: 6px; font-weight: 600;" id="reading-trans">
                 <strong>中文翻譯：</strong>「嗨！我叫卡洛斯。我住在馬德里。早上，我喝咖啡並讀一本書。多麼快樂的一天啊！」
             </p>
         </div>
         <div class="card" id="reading-quiz">
             <h3>❓ 閱讀理解測驗</h3>
-            <p>請問 Carlos 早上在做什麼？</p>
+            <p id="reading-q-text">請問 Carlos 早上在做什麼？</p>
             <div class="options">
                 <button class="option-btn" onclick="checkReading(false)">A. 跑步和看電視</button>
                 <button class="option-btn" onclick="checkReading(true)">B. 喝咖啡和讀書</button>
@@ -279,58 +472,178 @@
         </div>
     </div>
 
-    <!-- ================= 頁籤 4：文法小學堂 ================= -->
+    <!-- ================= 頁籤 4：30天文法小學堂 ================= -->
     <div id="tab-grammar" class="tab-content hidden">
         <div class="grammar-box">
-            <h3>📌 西語文法亮點：主詞代名詞</h3>
-            <ul>
+            <h3>📌 30天文法進度：第 <span class="gram-day-label">1</span> 天核心文法</h3>
+            <p id="grammar-desc"><strong>主詞代名詞基本概念：</strong>西語中動詞變化會隨主詞改變。</p>
+            <ul id="grammar-list">
                 <li><strong>Yo</strong> = 我 (Yo soy Carlos. 我是卡洛斯)</li>
                 <li><strong>Tú</strong> = 你</li>
                 <li><strong>Él / Ella</strong> = 他 / 她</li>
             </ul>
         </div>
         <div class="grammar-box">
-            <h3>📌 實用小秘訣：驚嘆號倒寫</h3>
-            <p>西語句首要加倒立的符號！例如：<strong>¡Hola!</strong>、<strong>¿Qué tal?</strong></p>
+            <h3>📌 實用小秘訣</h3>
+            <p id="grammar-tip">西語句首要加倒立的驚嘆號與問號！例如：<strong>¡Hola!</strong>、<strong>¿Qué tal?</strong></p>
         </div>
     </div>
 
-    <!-- ================= 頁籤 5：造句挑戰 ================= -->
+    <!-- ================= 頁籤 5：30天造句挑戰 ================= -->
     <div id="tab-sentence" class="tab-content hidden">
         <div class="card">
-            <h3>✍️ 新手造句闖關</h3>
-            <p>題目：我想說 <strong>「我是...」</strong>，請問空格處應填？</p>
+            <h3>✍️ 30天造句闖關（第 <span class="sent-day-label">1</span> 天）</h3>
+            <p id="sent-prompt">題目：我想說 <strong>「我是...」</strong>，請問空格處應填？</p>
             <p style="text-align: center; font-size: 18px; margin: 15px 0;">
-                <span class="sentence-slot" id="slot-word">____</span> soy feliz.
+                <span class="sentence-slot" id="slot-word">____</span> <span id="sent-rest">soy feliz.</span>
             </p>
-            <div class="options">
-                <button class="option-btn" onclick="checkSentence('Tú')">A. Tú (你)</button>
-                <button class="option-btn" onclick="checkSentence('Yo')">B. Yo (我)</button>
-                <button class="option-btn" onclick="checkSentence('Él')">C. Él (他)</button>
+            <div class="options" id="sent-options">
+                <button class="option-btn" onclick="checkSentence('Yo', true)">A. Yo (我)</button>
+                <button class="option-btn" onclick="checkSentence('Tú', false)">B. Tú (你)</button>
+                <button class="option-btn" onclick="checkSentence('Él', false)">C. Él (他)</button>
             </div>
         </div>
     </div>
 
-    <!-- ================= 頁籤 6：生活 Vlog 影音角 ================= -->
+    <!-- ================= 頁籤 6：30天生活 Vlog 影音逐句對照角 ================= -->
     <div id="tab-vlog" class="tab-content hidden">
         <div class="card">
-            <h3>📺 西班牙語生活 Vlog (新手向)</h3>
-            <p>邊看西班牙日常 Vlog 影片，邊適應真實生活中的西語語感與雙語字幕：</p>
+            <h3>📺 30天生活 Vlog 影音逐句同步學習</h3>
+            <p>選擇學習天數，影片播放時會透過<strong>黃色透明高亮框架</strong>同步指引對應的西語句子與中文翻譯：</p>
+            <select class="day-select" id="vlog-day-select" onchange="changeVlogDay()">
+                <script>
+                    for(let i=1; i<=30; i++) {
+                        document.write(`<option value="${i}">第 ${i} 天 Vlog：日常情境對話實境</option>`);
+                    }
+                </script>
+            </select>
+            
             <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/hjgiXM9zUiY" title="Spanish Vlogging" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe id="vlog-iframe" src="https://www.youtube.com/embed/hjgiXM9zUiY" title="Spanish Vlogging" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+
+            <div style="margin-bottom: 8px; font-weight: bold; color: #5e4b8b;">💡 逐句同步字幕對照（點擊句子可跳轉並高亮）：</div>
+            <div class="subtitle-box" id="subtitle-container">
+                <!-- 動態載入每句的黃色高亮字幕 -->
             </div>
         </div>
     </div>
 
 </div>
 
+<!-- 炫彩特效彈窗容器 -->
+<div class="modal-overlay" id="custom-modal" onclick="closeModal()">
+    <div class="modal-card" onclick="event.stopPropagation()">
+        <div class="modal-emoji" id="modal-emoji">🎉</div>
+        <div class="modal-title" id="modal-title">太棒了！</div>
+        <div class="modal-text" id="modal-text">答對囉！獲得豐富金幣獎勵！</div>
+        <button onclick="closeModal()">繼續學習 ✨</button>
+    </div>
+</div>
+
 <script>
-    let coins = 10;
+    let coins = 50;
     let hasHat = false;
+    let currentDay = 1;
+
+    // 30天課程資料庫模擬
+    const dayData = {};
+    for(let i=1; i<=30; i++) {
+        dayData[i] = {
+            goal: `掌握第 ${i} 天的核心西語日常主題與聽說讀寫訓練。`,
+            word: { q: `請選出第 ${i} 天核心單字對應的正確中文意思：`, options: ["A. 選項示範一", "B. 正確單字選項", "C. 選項示範三"], correct: 1 },
+            reading: { 
+                text: `¡Hola! Día ${i}. Hoy aprendemos un poco más de español con situaciones reales y práctica diaria. ¡Qué emoción!`, 
+                trans: `「嗨！第 ${i} 天。今天我們透過真實情境與日常練習多學了一點西語。真令人興奮！」`,
+                q: `請問第 ${i} 天的文章主要在說什麼？`,
+                opts: ["A. 學習西語與日常練習", "B. 在家裡睡覺整天", "C. 去超級市場買菜"]
+            },
+            grammar: { title: `第 ${i} 天文法重點`, desc: `探討西語第 ${i} 階段的動詞時態與句型結構。`, tip: `保持每天 20 分鐘，累積 30 天就能流利對話！` },
+            sentence: { prompt: `完成第 ${i} 天的句型填空：`, rest: `es muy interesante.`, correct: 'Este' },
+            vlogLines: [
+                { time: 0, es: `¡Hola a todos! Bienvenidos al día ${i} de nuestro vlog.`, zh: `大家好！歡迎來到我們的 Vlog 第 ${i} 天。` },
+                { time: 5, es: `Hoy vamos a explorar cosas nuevas en la ciudad.`, zh: `今天我們要在城市裡探索新鮮事。` },
+                { time: 10, es: `Me encanta tomar un buen café por la mañana.`, zh: `我非常喜歡在早晨喝一杯好咖啡。` },
+                { time: 15, es: `¿Me acompañas en este recorrido diario?`, zh: `你要和我一起參與這趟日常旅程嗎？` },
+                { time: 20, es: `¡Vamos a aprender mucho español hoy!`, zh: `我們今天要學到很多西語！` }
+            ]
+        }
+    }
+
+    dayData[1].word = { q: `請選出西語單字 <strong>"Gato"</strong> 的正確意思：`, options: ["A. 狗狗 (Perro)", "B. 貓咪 (Gato)", "C. 兔子 (Conejo)"], correct: 1 };
+    dayData[2].word = { q: `請選出西語單字 <strong>"Manzana"</strong> 的正確意思：`, options: ["A. 香蕉 (Plátano)", "B. 蘋果 (Manzana)", "C. 橘子 (Naranja)"], correct: 1 };
 
     function updateUI() {
         document.getElementById('coins').innerText = coins;
+        document.getElementById('day-progress').innerText = `第 ${currentDay} 天 / 共 30 天`;
+        document.querySelectorAll('.word-day-label').forEach(el => el.innerText = currentDay);
+        document.querySelectorAll('.read-day-label').forEach(el => el.innerText = currentDay);
+        document.querySelectorAll('.gram-day-label').forEach(el => el.innerText = currentDay);
+        document.querySelectorAll('.sent-day-label').forEach(el => el.innerText = currentDay);
     }
+
+    // 顯示炫彩特效動態彈窗
+    function showModal(emoji, title, text) {
+        document.getElementById('modal-emoji').innerText = emoji;
+        document.getElementById('modal-title').innerText = title;
+        document.getElementById('modal-text').innerText = text;
+        document.getElementById('custom-modal').classList.add('show');
+    }
+
+    function closeModal() {
+        document.getElementById('custom-modal').classList.remove('show');
+    }
+
+    function changeDay() {
+        currentDay = parseInt(document.getElementById('current-day-select').value);
+        document.getElementById('vlog-day-select').value = currentDay;
+        updateUI();
+        document.getElementById('day-goal-text').innerHTML = `🎯 <strong>今日目標 (Day ${currentDay})：</strong>${dayData[currentDay].goal}`;
+        document.getElementById('reading-text').innerText = dayData[currentDay].reading.text;
+        document.getElementById('reading-trans').innerHTML = `<strong>中文翻譯：</strong>${dayData[currentDay].reading.trans}`;
+        document.getElementById('reading-q-text').innerText = dayData[currentDay].reading.q;
+        loadVlogSubtitles();
+        showModal('🗓️', `切換至第 ${currentDay} 天`, `已成功載入第 ${currentDay} 天課程，開始今天的 20 分鐘衝刺吧！`);
+    }
+
+    function changeVlogDay() {
+        currentDay = parseInt(document.getElementById('vlog-day-select').value);
+        document.getElementById('current-day-select').value = currentDay;
+        changeDay();
+    }
+
+    function loadVlogSubtitles() {
+        const container = document.getElementById('subtitle-container');
+        container.innerHTML = '';
+        const lines = dayData[currentDay].vlogLines;
+        
+        lines.forEach((line, index) => {
+            const div = document.createElement('div');
+            div.className = 'sub-line' + (index === 0 ? ' active-highlight' : '');
+            div.id = `sub-${index}`;
+            div.innerHTML = `<strong>[${index + 1}]</strong> 🇪🇸 ${line.es}<br><span style="color:#555;">🇨🇳 ${line.zh}</span>`;
+            div.onclick = () => highlightLine(index);
+            container.appendChild(div);
+        });
+    }
+
+    let activeSubIndex = 0;
+    function highlightLine(index) {
+        document.querySelectorAll('.sub-line').forEach(el => el.classList.remove('active-highlight'));
+        const target = document.getElementById(`sub-${index}`);
+        if(target) {
+            target.classList.add('active-highlight');
+            target.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            activeSubIndex = index;
+        }
+    }
+
+    // 自動模擬影片播放時的黃色高亮框架指引跳動
+    setInterval(() => {
+        const lines = dayData[currentDay].vlogLines;
+        activeSubIndex = (activeSubIndex + 1) % lines.length;
+        highlightLine(activeSubIndex);
+    }, 6000);
 
     // 頁籤切換
     function switchTab(tabName, event) {
@@ -343,21 +656,20 @@
         }
     }
 
-    // 任務一答題
+    // 任務答題特效
     function checkAnswer(isCorrect) {
         if (isCorrect) {
-            alert('答對了！小狐狸開心搖尾巴，獲得 40 枚金幣！🎉');
-            coins += 40;
+            coins += 20;
             updateUI();
             document.getElementById('task-1').classList.add('hidden');
             document.getElementById('task-2').classList.remove('hidden');
             document.getElementById('fox-status').innerText = '準備換裝';
+            showModal('🎉', '答對了！', '小狐狸開心搖尾巴，獲得 20 枚金幣！解鎖換裝資格！');
         } else {
-            alert('答錯囉！提示：¡Hola! 是最常見的打招呼方式，再試一次吧！');
+            showModal('❌', '答錯囉！', '提示：¡Hola! 是最常見的打招呼方式，再試一次吧！');
         }
     }
 
-    // 買帽子
     function buyHat() {
         if (coins >= 50 && !hasHat) {
             coins -= 50;
@@ -366,45 +678,47 @@
             document.getElementById('fox-hat').style.display = 'block';
             document.getElementById('buy-btn').innerText = '已穿戴 🧢';
             document.getElementById('buy-btn').disabled = true;
-            document.getElementById('fox-status').innerText = '時尚小狐狸';
-            alert('成功幫小狐狸戴上帽兜！牠現在超級帥氣！✨');
+            showModal('👑', '換裝成功！', '成功幫小狐狸戴上時尚帽兜！牠現在超級帥氣！✨');
+        } else {
+            showModal('⚠️', '金幣不足', '金幣不足 50 枚，趕快去完成各單元的練習賺取金幣吧！');
         }
     }
 
-    // 認字遊戲答題
     function checkWordGame(isCorrect) {
         if (isCorrect) {
-            alert('太棒了！答對啦！"Gato" 就是貓咪。獲得 25 枚金幣！💰');
-            coins += 25;
+            coins += 15;
             updateUI();
+            showModal('🌟', '認字成功！', '太棒了！答對啦！獲得 15 枚金幣！💰');
         } else {
-            alert('答錯囉！提示：這是一個毛茸茸、會喵喵叫的小動物。');
+            showModal('💡', '再想想看', '答錯囉！這是一個毛茸茸的小動物，再試一次！');
         }
     }
 
-    // 閱讀理解答題
     function checkReading(isCorrect) {
         if (isCorrect) {
-            alert('答對了！你成功讀懂了文章內容，獲得 35 枚金幣！📚💰');
-            coins += 35;
+            coins += 25;
             updateUI();
             document.getElementById('reading-quiz').style.display = 'none';
+            showModal('📚', '閱讀達人！', '閱讀測驗答對了！你成功掌握了短文內容，獲得 25 枚金幣！');
         } else {
-            alert('答錯囉！再檢查一下文章裡提到的 "tomo un café y leo un libro" 喔！');
+            showModal('📖', '重新檢查', '答錯囉！請重新對照短文章裡提到的內容喔！');
         }
     }
 
-    // 造句挑戰答題
-    function checkSentence(choice) {
-        if (choice === 'Yo') {
-            document.getElementById('slot-word').innerText = 'Yo';
-            alert('太棒了！答對啦！「Yo soy feliz.」意思是「我很開心」。獲得 30 枚金幣！💰');
-            coins += 30;
+    function checkSentence(choice, isCorrect) {
+        if (isCorrect) {
+            coins += 20;
             updateUI();
+            showModal('✍️', '造句通關！', '造句闖關成功！「Yo soy feliz.」非常棒！獲得 20 枚金幣！');
         } else {
-            alert('答錯囉！提示：「我」的西語是兩個字母，開頭是 Y。');
+            showModal('🧐', '加油！', '答案不對喔，西語第一人稱「我」是兩個字母，開頭是 Y！');
         }
     }
+
+    window.onload = function() {
+        loadVlogSubtitles();
+        updateUI();
+    };
 </script>
 
 </body>
